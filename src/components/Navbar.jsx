@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <nav
       x-data="{ isOpen: false }"
-      className={`sticky top-0   ${
+      className={`sticky top-0 z-10  ${
         navbarBg ? "bg-[#32CD32]" : "bg-[#008A00]"
       }  shadow`}
     >
