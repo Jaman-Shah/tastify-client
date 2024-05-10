@@ -3,6 +3,7 @@ import BannerLeft from "./BannerLeft/BannerLeft";
 
 import RightSlider from "./RightSlider/RightSlider";
 import TopFoods from "./TopFoods/TopFoods";
+import BestChefs from "./BestChefs/BestChefs";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         </div>
       </div>
       <TopFoods />
+      <BestChefs />
     </div>
   );
 };
