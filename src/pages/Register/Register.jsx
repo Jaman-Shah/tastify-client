@@ -76,7 +76,7 @@ const Register = () => {
   return (
     <div>
       <div className="relative max-w-screen-lg mx-auto my-10 bg-green-300 p-4 rounded-3xl">
-        <div className=" absolute h-1/2 top-0 left-[100px] rounded-b-lg  shadow-2xl w-[150px] bg-gray-500">
+        <div className=" absolute h-[200px] top-0 left-[100px] rounded-b-lg  shadow-2xl w-[150px] bg-gray-500">
           <div className="flex justify-around">
             <div className="h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
             <div className="h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
