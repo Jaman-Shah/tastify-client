@@ -1,16 +1,14 @@
 import React from "react";
+import Banner from "./Banner/Banner";
+import Search from "./Search/Search";
+import Foods from "./Banner/Foods/Foods";
 
 const AllFoods = () => {
   return (
     <div className="p-4">
-      <div className="rounded-2xl text-center bg-[url('https://www.ucsfhealth.org/-/media/project/ucsf/ucsf-health/education/hero/top-ten-foods-for-health-2x.jpg')] bg-cover bg-center">
-        <div className="font-bold rounded-2xl bg-gradient-to-tr  from-gray-900 text-white p-10">
-          <h1 className="text-4xl mb-4">
-            All Foods <span className="text-green-400">List</span>
-          </h1>
-          <p className="text-2xl">Tastify | All Foods</p>
-        </div>
-      </div>
+      <Banner />
+      <Search />
+      <Foods />
     </div>
   );
 };
