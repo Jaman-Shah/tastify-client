@@ -3,8 +3,10 @@ import Root from "../Root/Root";
 
 import AllFoods from "../pages/AllFoods/AllFoods";
 import Gallery from "../pages/Gallery/Gallery";
-import MyProfile from "../pages/MyProfile/MyProfile";
 import Home from "../pages/Home/Home";
+import MyAddedFoods from "../pages/MyAddedFoods/MyAddedFoods";
+import AddAFood from "../pages/AddAFood/AddAFood";
+import MyOrderedFoods from "../pages/MyOrderedFoods/MyOrderedFoods";
 
 export const routers = createBrowserRouter([
   {
@@ -24,8 +26,16 @@ export const routers = createBrowserRouter([
         element: <Gallery />,
       },
       {
-        path: "/myprofile",
-        element: <MyProfile />,
+        path: "/myaddedfoods",
+        element: <MyAddedFoods />,
+      },
+      {
+        path: "/addafood",
+        element: <AddAFood />,
+      },
+      {
+        path: "/myorderedfoods",
+        element: <MyOrderedFoods />,
       },
     ],
   },

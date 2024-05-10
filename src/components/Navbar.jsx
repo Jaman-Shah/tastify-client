@@ -8,6 +8,11 @@ import { IoIosContact } from "react-icons/io";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [navbarBg, setNavbarBg] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  const toggleProfile = () => {
+    setShowProfileMenu(!showProfileMenu);
+  };
 
   const changeNavbarBg = () => {
     if (window.scrollY >= 90) {
@@ -97,7 +102,7 @@ const Navbar = () => {
             isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
           }`}
         >
-          <div className="flex gap-10 flex-col md:flex-row md:mx-6">
+          <div className="flex relative gap-10 flex-col md:flex-row md:mx-6">
             <NavLink to="/" className={activeClass}>
               <IoHomeOutline
                 className={`${activeClass} text-3xl rounded-full`}
@@ -111,11 +116,38 @@ const Navbar = () => {
                 className={`${activeClass} text-3xl rounded-full`}
               />
             </NavLink>
-            <NavLink to="/myprofile" className={activeClass}>
-              <IoIosContact
-                className={`${activeClass} text-3xl rounded-full`}
-              />
-            </NavLink>
+            <button onClick={toggleProfile}>
+              <IoIosContact className={`text-red-500 text-3xl rounded-full`} />
+            </button>
+            <div
+              className={`${
+                showProfileMenu ? "absolute" : "hidden"
+              } -bottom-[200px] right-0 bg-green-300 p-4 rounded-2xl`}
+            >
+              <div className="flex flex-col gap-4">
+                <Link
+                  onClick={toggleProfile}
+                  to="/myaddedfoods"
+                  className="p-2 font-bold rounded-2xl bg-gray-500 text-white"
+                >
+                  My Added Food Items
+                </Link>
+                <Link
+                  onClick={toggleProfile}
+                  to="/addafood"
+                  className="  p-2 font-bold rounded-2xl bg-gray-500 text-white"
+                >
+                  Add a food item
+                </Link>
+                <Link
+                  onClick={toggleProfile}
+                  to="/myorderedfoods"
+                  className="  p-2 font-bold rounded-2xl bg-gray-500 text-white"
+                >
+                  My ordered food items
+                </Link>
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-center md:block">
