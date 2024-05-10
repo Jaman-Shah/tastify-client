@@ -4,6 +4,7 @@ import BannerLeft from "./BannerLeft/BannerLeft";
 import RightSlider from "./RightSlider/RightSlider";
 import TopFoods from "./TopFoods/TopFoods";
 import BestChefs from "./BestChefs/BestChefs";
+import OtherServices from "./OtherServices/OtherServices";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       </div>
       <TopFoods />
       <BestChefs />
+      <OtherServices />
     </div>
   );
 };
