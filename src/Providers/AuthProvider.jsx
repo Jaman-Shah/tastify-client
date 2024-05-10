@@ -1,8 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  FacebookAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { auth } from "./../firebase/firebase.config";
@@ -12,6 +14,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const facebookProvider = new FacebookAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -26,6 +30,12 @@ const AuthProvider = ({ children }) => {
   const signOutUser = () => {
     setLoading(true);
     return signOut(auth);
+  };
+
+  // sign in with facebook
+
+  const singInWithFacebook = () => {
+    return signInWithPopup(auth, facebookProvider);
   };
 
   useEffect(() => {
@@ -45,6 +55,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     signOutUser,
+    singInWithFacebook,
   };
 
   return (

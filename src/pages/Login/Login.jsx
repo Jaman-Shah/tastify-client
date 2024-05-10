@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
 
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, singInWithFacebook } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,6 +29,16 @@ const Login = () => {
       });
   };
 
+  const handleFacebookLogin = () => {
+    singInWithFacebook()
+      .then((result) => {
+        toast.success("Login Success");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="relative max-w-screen-lg mx-auto my-10 bg-green-300 p-4 rounded-3xl">
@@ -42,7 +52,10 @@ const Login = () => {
             Login With
           </h1>
           <div className="text-center">
-            <button className="p-2  rounded-full bg-blue-700 border-green-500">
+            <button
+              onClick={handleFacebookLogin}
+              className="p-2  rounded-full bg-blue-700 border-green-500"
+            >
               <BsFacebook className="text-2xl" />
             </button>
           </div>

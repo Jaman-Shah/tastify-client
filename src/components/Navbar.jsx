@@ -5,6 +5,7 @@ import { FaBowlFood } from "react-icons/fa6";
 import { RiGalleryLine } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
 import { AuthContext } from "../Providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
 
   //  getting user from auth context
 
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
 
   const toggleProfile = () => {
     setShowProfileMenu(!showProfileMenu);
@@ -33,13 +34,24 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // sign out user
+
+  const handleSignOutUser = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("successfully sign out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // reuseable active class
 
   const activeClass = ({ isActive }) =>
     `hover:text-black hover:rounded-xl transition ease-in-out delay-  ${
       isActive ? "text-black" : "text-orange-500"
     }`;
-  // reusable links
 
   return (
     <nav
@@ -130,7 +142,7 @@ const Navbar = () => {
                       className={`text-red-500 h-8 w-8 text-3xl border-2 border-white rounded-full`}
                     />
                   </button>
-                  <button>
+                  <button onClick={handleSignOutUser}>
                     <AiOutlineLogout className="text-3xl text-red-500" />
                   </button>
                 </div>
