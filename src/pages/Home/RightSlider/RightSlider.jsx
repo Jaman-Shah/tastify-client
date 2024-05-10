@@ -48,7 +48,7 @@ const RightSlider = () => {
       <div className="absolute p-4 top-10 h-full w-full justify-between items-center flex text-white px-10 text-3xl">
         <div className="absolute top-2 md:top-20  p-4">
           <div className="font-semibold md:font-extrabold text-3xl  flex flex-col gap-2 md:gap-10 lg:mb-6 ">
-            <h1 className="shadow-3xl shadow-top shadow-right shadow-bottom shadow-left shadow-black">
+            <h1 className="shadow-3xl bg-red-400  shadow-top shadow-right shadow-bottom shadow-left shadow-black">
               Buy Best Foods From Here
             </h1>
 
