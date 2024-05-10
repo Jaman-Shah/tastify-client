@@ -4,11 +4,15 @@ import { IoHomeOutline } from "react-icons/io5";
 import { FaBowlFood } from "react-icons/fa6";
 import { RiGalleryLine } from "react-icons/ri";
 import { IoIosContact } from "react-icons/io";
+import { AiOutlineLogout } from "react-icons/ai";
+import { LuLogIn } from "react-icons/lu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [navbarBg, setNavbarBg] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  const user = false;
 
   const toggleProfile = () => {
     setShowProfileMenu(!showProfileMenu);
@@ -102,7 +106,7 @@ const Navbar = () => {
             isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
           }`}
         >
-          <div className="flex relative gap-10 flex-col md:flex-row md:mx-6">
+          <div className="flex relative items-center gap-10 flex-col md:flex-row md:mx-6">
             <NavLink to="/" className={activeClass}>
               <IoHomeOutline
                 className={`${activeClass} text-3xl rounded-full`}
@@ -116,9 +120,35 @@ const Navbar = () => {
                 className={`${activeClass} text-3xl rounded-full`}
               />
             </NavLink>
-            <button onClick={toggleProfile}>
-              <IoIosContact className={`text-red-500 text-3xl rounded-full`} />
-            </button>
+            <div className="flex gap-4 items-center flex-col md:flex-row ">
+              {user ? (
+                <div className="flex gap-4">
+                  <button onClick={toggleProfile}>
+                    <IoIosContact
+                      className={`text-red-500 text-3xl rounded-full`}
+                    />
+                  </button>
+                  <button>
+                    <AiOutlineLogout className="text-3xl text-red-500" />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-2 items-center">
+                  <Link
+                    to="/login"
+                    className="p-1 border rounded-xl text-sm   text-white"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="p-1 border rounded-xl text-sm   text-white"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
+            </div>
             <div
               className={`${
                 showProfileMenu ? "absolute" : "hidden"
@@ -151,7 +181,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex justify-center md:block">
-            <a
+            {/* <a
               className="relative 
                transition-colors duration-300 transform  hover:text-gray-600 dark:hover:text-gray-300"
               href="#"
@@ -172,7 +202,7 @@ const Navbar = () => {
               </svg>
 
               <span className="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

@@ -7,6 +7,8 @@ import Home from "../pages/Home/Home";
 import MyAddedFoods from "../pages/MyAddedFoods/MyAddedFoods";
 import AddAFood from "../pages/AddAFood/AddAFood";
 import MyOrderedFoods from "../pages/MyOrderedFoods/MyOrderedFoods";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 export const routers = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ export const routers = createBrowserRouter([
       {
         path: "/myorderedfoods",
         element: <MyOrderedFoods />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
