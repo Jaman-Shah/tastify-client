@@ -9,11 +9,13 @@ import AddAFood from "../pages/AddAFood/AddAFood";
 import MyOrderedFoods from "../pages/MyOrderedFoods/MyOrderedFoods";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const routers = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
