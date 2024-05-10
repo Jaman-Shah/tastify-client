@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { auth } from "../../firebase/firebase.config";
 
 const Register = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
+
+  // getting auth context
+
+  const { createUser } = useContext(AuthContext);
+
+  // validate password function
+
+  function validatePassword(password) {
+    const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    return regex.test(password);
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -13,7 +28,49 @@ const Register = () => {
     const photo_url = form.photo_url.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, photo_url, password);
+
+    //  validating password
+    if (!validatePassword(password)) {
+      let errorMessage = "";
+
+      // Testing upperCase
+      if (!/(?=.*[A-Z])/.test(password)) {
+        errorMessage += "Password must contain at least one uppercase letter.";
+      }
+
+      // Testing lowerCase
+      if (!/(?=.*[a-z])/.test(password)) {
+        errorMessage += "Password must contain at least one lowercase letter.";
+      }
+
+      // Testing length
+      if (password.length < 6) {
+        errorMessage += "Password must be at least 6 characters long.";
+      }
+
+      // Displaying the toast with the formatted error messages
+      toast.error(errorMessage);
+    } else {
+      createUser(email, password)
+        .then((result) => {
+          // Adding user profile update
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo_url,
+          }).then(() => {
+            toast.success("Account Created Successfully");
+            navigate("/");
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.code === "auth/email-already-in-use") {
+            toast.error("This email is already in use.");
+          } else {
+            toast.error("An error occurred while creating the user.");
+          }
+        });
+    }
   };
 
   return (
