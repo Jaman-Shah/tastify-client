@@ -3,9 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaBowlFood } from "react-icons/fa6";
 import { RiGalleryLine } from "react-icons/ri";
-import { IoIosContact } from "react-icons/io";
 import { AiOutlineLogout } from "react-icons/ai";
-import { LuLogIn } from "react-icons/lu";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
@@ -127,8 +125,9 @@ const Navbar = () => {
               {user ? (
                 <div className="flex gap-4">
                   <button onClick={toggleProfile}>
-                    <IoIosContact
-                      className={`text-red-500 text-3xl rounded-full`}
+                    <img
+                      src={user.photoURL}
+                      className={`text-red-500 h-8 w-8 text-3xl border-2 border-white rounded-full`}
                     />
                   </button>
                   <button>
@@ -155,7 +154,7 @@ const Navbar = () => {
             <div
               className={`${
                 showProfileMenu ? "absolute" : "hidden"
-              } -bottom-[200px] right-0 bg-green-300 p-4 rounded-2xl`}
+              } -bottom-[200px] right-0 bg-green-300 border-2 shadow-2xl border-black p-4 rounded-2xl`}
             >
               <div className="flex flex-col gap-4">
                 <Link
