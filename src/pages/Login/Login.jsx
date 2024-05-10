@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
+import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
 
 const Login = () => {
+  const [eyeOpen, setEyeOpen] = useState(false);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
+
   return (
     <div>
       <div className="relative max-w-screen-lg mx-auto my-10 bg-green-300 p-4 rounded-3xl">
@@ -28,35 +39,56 @@ const Login = () => {
           </div>
         </div>
         <div>
-          <form action="" className="flex gap-4 flex-col w-1/3 mx-auto">
+          <form
+            onSubmit={handleLogin}
+            className="flex gap-4 flex-col w-1/3 mx-auto"
+          >
             <div>
               <input
                 type="text"
                 name="email"
                 placeholder="Enter Your Email"
-                className="h-12 border p-2 border-green-500 w-full"
+                className="h-12 border p-4 border-green-500 w-full rounded-xl"
               />
             </div>
-            <div>
+            <div className="relative">
               <input
-                type="text"
+                type={eyeOpen ? "text" : "password"}
                 name="password"
                 placeholder="Enter Your Password"
-                className="h-12 border p-2 border-green-500 w-full"
+                className="h-12 border p-4 border-green-500 w-full rounded-xl"
               />
+              {!eyeOpen ? (
+                <div>
+                  <BsFillEyeSlashFill
+                    onClick={() => setEyeOpen(true)}
+                    className="absolute top-2 right-2 text-3xl "
+                  />
+                </div>
+              ) : (
+                <BsFillEyeFill
+                  onClick={() => setEyeOpen(false)}
+                  className="absolute top-2 right-2 text-3xl "
+                />
+              )}
             </div>
-            <div>
+            <div className="font-bold">
               <p>
-                Don't have account{" "}
+                Don't have account ?
                 <span>
                   <Link to="/register">
-                    <span className="border-b-2 border-blue-500">Register</span>
+                    <span className="border-b-2 border-blue-500">
+                      {" "}
+                      Register
+                    </span>
                   </Link>
                 </span>
               </p>
             </div>
             <div className="text-center">
-              <button className="p-2 border-2 border-green-500">Login</button>
+              <button className="p-2 border-2 rounded-xl border-green-500">
+                Login
+              </button>
             </div>
           </form>
         </div>
