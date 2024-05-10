@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
+import { AuthContext } from "../../Providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
+
+  const { loginUser } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        toast.success("Login Success");
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-credential") {
+          toast.error("Invalid credential");
+        } else {
+          toast.error("Login problem");
+        }
+      });
   };
 
   return (

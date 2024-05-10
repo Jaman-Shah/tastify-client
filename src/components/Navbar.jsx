@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaBowlFood } from "react-icons/fa6";
@@ -6,13 +6,16 @@ import { RiGalleryLine } from "react-icons/ri";
 import { IoIosContact } from "react-icons/io";
 import { AiOutlineLogout } from "react-icons/ai";
 import { LuLogIn } from "react-icons/lu";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [navbarBg, setNavbarBg] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-  const user = false;
+  //  getting user from auth context
+
+  const { user } = useContext(AuthContext);
 
   const toggleProfile = () => {
     setShowProfileMenu(!showProfileMenu);
