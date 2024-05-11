@@ -11,6 +11,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
+import PurchaseForm from "../pages/PurchaseForm/PurchaseForm";
 
 export const routers = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const routers = createBrowserRouter([
       {
         path: "/food/:id",
         element: <FoodDetails />,
+      },
+      {
+        path: "/purchase/:id",
+        element: <PurchaseForm />,
       },
     ],
   },
