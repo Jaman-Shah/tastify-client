@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import PurchaseForm from "../pages/PurchaseForm/PurchaseForm";
+import PrivateRoute from "./PrivateRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/myorderedfoods",
-        element: <MyOrderedFoods />,
+        element: (
+          <PrivateRoute>
+            <MyOrderedFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

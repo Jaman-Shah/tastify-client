@@ -52,7 +52,7 @@ const FoodDetails = () => {
           <h1 className="font-light text-[50px]">{price} $</h1>
 
           <p className=" text-red-400 text-2xl font-bold">
-            {quantity} {`piece${quantity > 0 ? "s" : ""} left`}
+            {quantity} {`piece${quantity > 1 ? "s" : ""} left`}
           </p>
           <p className=" text-white">From: {origin}</p>
           <p className="border-b-2 border-black">Category: {category}</p>
