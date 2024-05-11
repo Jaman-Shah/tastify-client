@@ -31,8 +31,8 @@ const PurchaseForm = () => {
         ...formData,
         id: _id || "",
         foodName: name || "",
-        quantity: quantity || "",
-        inDbQuantity: quantity || "",
+        quantity: quantity || 0,
+        inDbQuantity: quantity || 0,
         price: price || "",
       });
     } catch (error) {
@@ -47,6 +47,7 @@ const PurchaseForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
@@ -129,11 +130,8 @@ const PurchaseForm = () => {
             type="number"
             id="quantity"
             name="quantity"
-            value={
-              formData.quantity < 1
-                ? setFormData({ ...formData, quantity: 1 })
-                : formData.quantity
-            }
+            value={formData.quantity}
+            min="1"
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
