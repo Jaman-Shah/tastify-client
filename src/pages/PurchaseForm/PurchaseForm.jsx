@@ -77,9 +77,10 @@ const PurchaseForm = () => {
         "http://localhost:5005/orders",
         formDataWithoutInDbQuantity
       );
-
-      console.log(response.data);
-      loadFood();
+      if (response.data.insertResult && response.data.updateResult) {
+        toast.success("Order Place Success");
+        loadFood();
+      }
     } catch (error) {
       console.log(error.message);
     }
