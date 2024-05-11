@@ -50,6 +50,10 @@ const FoodDetails = () => {
 
         <div className="text-end p-24">
           <h1 className="font-light text-[50px]">{price} $</h1>
+
+          <p className=" text-red-400 text-2xl font-bold">
+            {quantity} {`piece${quantity > 0 ? "s" : ""} left`}
+          </p>
           <p className=" text-white">From: {origin}</p>
           <p className="border-b-2 border-black">Category: {category}</p>
 

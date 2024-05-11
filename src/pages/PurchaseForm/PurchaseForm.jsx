@@ -67,7 +67,22 @@ const PurchaseForm = () => {
     }
   }, [formData.inDbQuantity, formData.quantity]);
 
-  const handlePurchase = () => {};
+  const handlePurchase = async () => {
+    try {
+      // removing inDbQuantity from formData
+
+      const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
+      const response = await axios.post(
+        "http://localhost:5005/orders",
+        formDataWithoutInDbQuantity
+      );
+
+      console.log(response.data);
+      loadFood();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="container mx-auto">
@@ -158,8 +173,8 @@ const PurchaseForm = () => {
         </div>
         <div className="col-span-2">
           <button
-            type="button"
             onClick={handlePurchase}
+            type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
             Purchase
