@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const PurchaseForm = () => {
   const { user } = useContext(AuthContext);
@@ -10,7 +12,9 @@ const PurchaseForm = () => {
   console.log(id);
 
   const [formData, setFormData] = useState({
+    id: "",
     foodName: "",
+    inDbQuantity: "",
     price: "",
     quantity: "",
     buyerName: user.displayName,
@@ -28,6 +32,7 @@ const PurchaseForm = () => {
         id: _id || "",
         foodName: name || "",
         quantity: quantity || "",
+        inDbQuantity: quantity || "",
         price: price || "",
       });
     } catch (error) {
@@ -47,6 +52,20 @@ const PurchaseForm = () => {
       [name]: value,
     });
   };
+
+  // conditionally handling if user want to purchase extra
+
+  useEffect(() => {
+    if (formData.inDbQuantity !== "" && formData.quantity !== "") {
+      if (parseInt(formData.inDbQuantity) < parseInt(formData.quantity)) {
+        toast.error("Exceeds available quantity!");
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          quantity: prevFormData.inDbQuantity,
+        }));
+      }
+    }
+  }, [formData.inDbQuantity, formData.quantity]);
 
   const handlePurchase = () => {};
 
@@ -78,7 +97,7 @@ const PurchaseForm = () => {
             type="number"
             id="price"
             name="price"
-            value={formData.price}
+            value={formData.price * formData.quantity}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             disabled
@@ -95,7 +114,11 @@ const PurchaseForm = () => {
             type="number"
             id="quantity"
             name="quantity"
-            value={formData.quantity}
+            value={
+              formData.quantity < 1
+                ? setFormData({ ...formData, quantity: 1 })
+                : formData.quantity
+            }
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
