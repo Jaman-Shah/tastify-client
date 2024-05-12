@@ -1,16 +1,21 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddAFood = () => {
   const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
-    foodName: "",
-    foodImage: "",
-    foodCategory: "",
+    name: "",
+    image: "",
+    category: "",
     quantity: "",
     price: "",
-    foodOrigin: "",
+    origin: "",
     description: "",
+    creator_name: user.displayName,
+    creator_email: user.email,
+    order_count: 0,
   });
 
   const handleChange = (e) => {
@@ -21,9 +26,21 @@ const AddAFood = () => {
     });
   };
 
-  const handleAddItem = (e) => {
+  const handleAddItem = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5005/foods",
+        formData
+      );
+
+      if (response.data.acknowledged) {
+        toast.success("Data inserted Success");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -35,69 +52,75 @@ const AddAFood = () => {
       <form onSubmit={handleAddItem}>
         <div className="grid grid-cols-2 gap-4 bg-green-300 p-10 rounded-xl">
           <div className="">
-            <label htmlFor="foodName">Food Name</label>
+            <label htmlFor="name">Food Name</label>
             <input
               type="text"
-              id="foodName"
-              name="foodName"
-              value={formData.foodName}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className="">
-            <label htmlFor="foodImage">Food Image URL</label>
+            <label htmlFor="image">Food Image URL</label>
             <input
               type="text"
-              id="foodImage"
-              name="foodImage"
-              value={formData.foodImage}
+              id="image"
+              name="image"
+              value={formData.image}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className="">
-            <label htmlFor="foodCategory">Food Category</label>
+            <label htmlFor="category">Food Category</label>
             <input
               type="text"
-              id="foodCategory"
-              name="foodCategory"
-              value={formData.foodCategory}
+              id="category"
+              name="category"
+              value={formData.category}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className="">
             <label htmlFor="quantity">Quantity</label>
             <input
-              type="text"
+              type="number"
               id="quantity"
               name="quantity"
               value={formData.quantity}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className="">
             <label htmlFor="price">Price</label>
             <input
-              type="text"
+              type="number"
               id="price"
               name="price"
               value={formData.price}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className="">
-            <label htmlFor="foodOrigin">Food Origin (Country)</label>
+            <label htmlFor="origin">Food Origin (Country)</label>
             <input
               type="text"
-              id="foodOrigin"
-              name="foodOrigin"
-              value={formData.foodOrigin}
+              id="origin"
+              name="origin"
+              value={formData.origin}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
           <div className=" col-span-2">
@@ -108,18 +131,34 @@ const AddAFood = () => {
               value={formData.description}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"
+              required
             />
           </div>
-          <div className=" col-span-2">
-            <label htmlFor="addedBy">Added By</label>
-            <input
-              type="text"
-              id="addedBy"
-              name="addedBy"
-              value={`${user?.displayName} (${user?.email})`}
-              readOnly
-              className="border border-black rounded px-3 py-2 w-full"
-            />
+          <div className="col-span-2 flex gap-4 justify-between border w-full">
+            <div className="w-full">
+              <label htmlFor="addedBy">Creator Name</label>
+              <input
+                type="text"
+                id="addedBy"
+                name="addedBy"
+                value={formData.creator_name}
+                readOnly
+                className="border border-black rounded px-3 py-2 w-full"
+                required
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="addedBy">Creator Email</label>
+              <input
+                type="text"
+                id="addedBy"
+                name="addedBy"
+                value={formData.creator_email}
+                readOnly
+                className="border border-black rounded px-3 py-2 w-full"
+                required
+              />
+            </div>
           </div>
         </div>
         <button
