@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "./../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
 
 const MyOrderedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,45 @@ const MyOrderedFoods = () => {
   useEffect(() => {
     loadOrderedFoods();
   }, []);
+
+  const handleOrderDelete = (_id, id, quantity) => {
+    const body = { quantity, foodId: id };
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you Want to delete this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirm ",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+
+        fetch(`http://localhost:5005/orders/${_id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (
+              data.deleteResult.acknowledged &&
+              data.updateResult.acknowledged
+            ) {
+              loadOrderedFoods();
+              toast.success("Delete success");
+            }
+          });
+      }
+    });
+  };
 
   console.log(orderedFoods);
   return (
@@ -79,12 +119,14 @@ const MyOrderedFoods = () => {
                     {new Date(item.buyingDate).toLocaleString()}
                   </td>
                   <td className=" text-center">
-                    <Link
-                      to={`/craftdetails/${item._id}`}
+                    <button
+                      onClick={() =>
+                        handleOrderDelete(item._id, item.id, item.quantity)
+                      }
                       className="border-2 border-gray-500 md:p-2  text-black bg-transparent  hover:bg-green-400 hover:border-green-500 transition duration-500  rounded"
                     >
                       Delete
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               ))

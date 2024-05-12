@@ -38,8 +38,8 @@ const FoodDetails = () => {
     <div className="container mx-auto my-10">
       <div className="h-[400px] w-full bg-green-400 relative overflow-hidden rounded-2xl">
         <div className="absolute -top-[200px] -left-[150px] transform rotate-[10deg] h-[2000px] w-1/2 bg-orange-600"></div>
-        <div className="absolute  top-1/2 left-16  font-thin text-[100px]">
-          {name}
+        <div className="absolute  bottom-0 left-4  font-thin text-[90px]">
+          <h1> {name}</h1>
         </div>
         <div
           style={{
