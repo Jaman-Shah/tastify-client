@@ -77,7 +77,12 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/purchase/:id",
-        element: <PurchaseForm />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <PurchaseForm />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -10,7 +10,6 @@ const PurchaseForm = () => {
 
   const { id } = useParams();
   console.log(id);
-
   const [formData, setFormData] = useState({
     id: "",
     foodName: "",
@@ -26,7 +25,7 @@ const PurchaseForm = () => {
   const loadFood = async () => {
     try {
       const response = await axios.get(`http://localhost:5005/food/${id}`);
-      const { _id, name, quantity, price } = response.data;
+      const { _id, name, quantity, price, creator_email } = response.data;
       setFormData({
         ...formData,
         id: _id || "",
@@ -34,6 +33,7 @@ const PurchaseForm = () => {
         quantity: quantity || 0,
         inDbQuantity: quantity || 0,
         price: price || "",
+        creator_email: creator_email || "",
       });
     } catch (error) {
       console.log(error.message);
@@ -69,11 +69,14 @@ const PurchaseForm = () => {
     }
   }, [formData.inDbQuantity, formData.quantity]);
 
-  const handlePurchase = async (inDbQuantity) => {
+  const handlePurchase = async (inDbQuantity, creator_email) => {
     try {
       // removing inDbQuantity from formData
+      if (user.email === creator_email) {
+        return toast.error("You added this, You cannot buy this");
+      }
       if (inDbQuantity === 0) {
-        toast.error("This food Stock over");
+        return toast.error("This food Stock over");
       } else {
         const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
         const response = await axios.post(
@@ -176,7 +179,9 @@ const PurchaseForm = () => {
         </div>
         <div className="col-span-2">
           <button
-            onClick={() => handlePurchase(formData.inDbQuantity)}
+            onClick={() =>
+              handlePurchase(formData.inDbQuantity, formData.creator_email)
+            }
             type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
