@@ -9,8 +9,8 @@ const AddAFood = () => {
     name: "",
     image: "",
     category: "",
-    quantity: "",
-    price: "",
+    quantity: 0,
+    price: 0,
     origin: "",
     description: "",
     creator_name: user.displayName,
@@ -20,9 +20,13 @@ const AddAFood = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    const newValue =
+      name === "quantity" || name === "price" || name === "order_count"
+        ? parseInt(value) || ""
+        : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: newValue,
     });
   };
 

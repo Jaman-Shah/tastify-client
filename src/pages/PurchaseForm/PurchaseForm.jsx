@@ -14,9 +14,9 @@ const PurchaseForm = () => {
   const [formData, setFormData] = useState({
     id: "",
     foodName: "",
-    inDbQuantity: "",
-    price: "",
-    quantity: "",
+    inDbQuantity: 0,
+    price: 0,
+    quantity: 0,
     buyerName: user.displayName,
     buyerEmail: user.email,
     buyingDate: Date.now(),
@@ -47,10 +47,11 @@ const PurchaseForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    const newValue =
+      name === "quantity" || name === "price" ? parseInt(value) || "" : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: newValue,
     });
   };
 
