@@ -1,25 +1,6 @@
-import React, { useEffect, useState } from "react";
 import FoodsCard from "../../FoodsCard/FoodsCard";
-import axios from "axios";
 
-const Foods = () => {
-  const [foods, setFoods] = useState([]);
-
-  const loadFoods = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:5005/foods");
-      setFoods(data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  useEffect(() => {
-    loadFoods();
-  }, []);
-
-  console.log(foods);
-
+const Foods = ({ foods }) => {
   return (
     <div>
       <div className="my-14">
