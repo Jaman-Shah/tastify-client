@@ -13,6 +13,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import PurchaseForm from "../pages/PurchaseForm/PurchaseForm";
 import PrivateRoute from "./PrivateRoute";
+import UpdateFood from "../pages/UpdateFood/UpdateFood";
 
 export const routers = createBrowserRouter([
   {
@@ -43,6 +44,16 @@ export const routers = createBrowserRouter([
             <AddAFood />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateFood />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5005/food/${params.id}`),
       },
       {
         path: "/myorderedfoods",

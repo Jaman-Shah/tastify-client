@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "./../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyAddedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const MyAddedFoods = () => {
     loadAddedFoods();
   }, []);
 
-  const handleOrderDelete = (_id) => {
+  const handleFoodDelete = (_id) => {
     console.log(_id);
     Swal.fire({
       title: "Are you sure?",
@@ -81,6 +82,7 @@ const MyAddedFoods = () => {
               <th className="border-r-2 border-black px-4 py-2 text-white">
                 Price
               </th>
+              <th className=" px-4 py-2 text-white">Update</th>
               <th className=" px-4 py-2 text-white">Delete</th>
             </tr>
           </thead>
@@ -113,8 +115,16 @@ const MyAddedFoods = () => {
                     {item.price}
                   </td>
                   <td className=" text-center">
+                    <Link
+                      to={`/update/${item._id}`}
+                      className="border-2 border-gray-500 md:p-2  text-black bg-transparent  hover:bg-green-400 hover:border-green-500 transition duration-500  rounded"
+                    >
+                      Update
+                    </Link>
+                  </td>
+                  <td className=" text-center">
                     <button
-                      onClick={() => handleOrderDelete(item._id)}
+                      onClick={() => handleFoodDelete(item._id)}
                       className="border-2 border-gray-500 md:p-2  text-black bg-transparent  hover:bg-green-400 hover:border-green-500 transition duration-500  rounded"
                     >
                       Delete
