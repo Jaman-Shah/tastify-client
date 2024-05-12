@@ -68,18 +68,21 @@ const PurchaseForm = () => {
     }
   }, [formData.inDbQuantity, formData.quantity]);
 
-  const handlePurchase = async () => {
+  const handlePurchase = async (inDbQuantity) => {
     try {
       // removing inDbQuantity from formData
-
-      const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
-      const response = await axios.post(
-        "http://localhost:5005/orders",
-        formDataWithoutInDbQuantity
-      );
-      if (response.data.insertResult && response.data.updateResult) {
-        toast.success("Order Place Success");
-        loadFood();
+      if (inDbQuantity === 0) {
+        toast.error("This food Stock over");
+      } else {
+        const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
+        const response = await axios.post(
+          "http://localhost:5005/orders",
+          formDataWithoutInDbQuantity
+        );
+        if (response.data.insertResult && response.data.updateResult) {
+          toast.success("Order Place Success");
+          loadFood();
+        }
       }
     } catch (error) {
       console.log(error.message);
@@ -172,7 +175,7 @@ const PurchaseForm = () => {
         </div>
         <div className="col-span-2">
           <button
-            onClick={handlePurchase}
+            onClick={() => handlePurchase(formData.inDbQuantity)}
             type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
