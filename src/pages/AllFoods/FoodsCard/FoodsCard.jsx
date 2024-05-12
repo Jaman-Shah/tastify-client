@@ -21,7 +21,7 @@ const FoodsCard = ({ food }) => {
       <div className="relative bg-gray-300 border rounded-3xl p-6">
         <div className="">
           <h1 className="text-4xl font-extrabold text-orange-500">$ {price}</h1>
-          <p className="text-3xl font-extrabold text-center border-b-2 border-black mb-2">
+          <p className="text-2xl my-2 font-extrabold text-center border-b-2 border-black mb-2">
             {name}
           </p>
           <p className="text-center">{category}</p>

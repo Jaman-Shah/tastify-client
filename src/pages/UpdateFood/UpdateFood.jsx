@@ -16,13 +16,13 @@ const UpdateFood = () => {
 
   console.log(loadedFood);
   const [formData, setFormData] = useState({
-    name: "",
-    image: "",
-    category: "",
-    quantity: 0,
-    price: 0,
-    origin: "",
-    description: "",
+    name: name,
+    image: image,
+    category: category,
+    quantity: quantity,
+    price: price,
+    origin: origin,
+    description: description,
     creator_name: user.displayName,
     creator_email: user.email,
     order_count: 0,
@@ -72,7 +72,7 @@ const UpdateFood = () => {
               type="text"
               id="name"
               name="name"
-              //   value={formData.name}
+              // value={formData.name}
               defaultValue={name}
               onChange={handleChange}
               className="border border-black rounded px-3 py-2 w-full"

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopFoodsCard from "../../../components/TopFoodsCard";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const TopFoods = () => {
+  const [topSixFoods, setTopSixFoods] = useState([]);
+
+  const loadTopFoods = async () => {
+    const response = await axios.get("http://localhost:5005/topsoldfoods");
+    setTopSixFoods(response.data);
+  };
+
+  useEffect(() => {
+    loadTopFoods();
+  }, []);
+
+  console.log("top foods ", topSixFoods);
   return (
     <div>
       <div className="text-center ">
@@ -12,12 +26,15 @@ const TopFoods = () => {
       </div>
       <div className="my-14">
         <div className=" grid mx-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between gap-10">
-          {[1, 2, 3, 4, 5, 6].map((elem) => {
-            return <TopFoodsCard />;
-          })}
+          {TopFoods &&
+            topSixFoods.map((food) => {
+              return <TopFoodsCard key={food._id} food={food} />;
+            })}
         </div>
-        <div className="text-center mt-2">
-          <button className="p-2 border bg-green-400">See All</button>
+        <div className="text-center mt-10">
+          <Link to="/allfoods" className="p-2 border bg-green-400">
+            See All
+          </Link>
         </div>
       </div>
     </div>
