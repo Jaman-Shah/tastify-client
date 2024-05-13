@@ -2,7 +2,7 @@ import React from "react";
 
 const BannerLeft = () => {
   return (
-    <div className="h-[400px] flex relative justify-center">
+    <div className="h-[400px] hidden md:flex relative justify-center">
       <div className="w-1/3 h-full bg-gray-700 rounded-b-3xl"></div>
       <div
         className="h-[300px] w-[300px] absolute border-2 border-gray-200

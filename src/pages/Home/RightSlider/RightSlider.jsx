@@ -38,27 +38,31 @@ const RightSlider = () => {
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl h-[350px] relative bg-black">
+    <div className="overflow-hidden  rounded-2xl h-[350px] relative bg-black">
       <img
         src={slides[current].image}
         alt={`Slide ${current + 1}`}
         className="w-full h-full object-cover"
       />
 
-      <div className="absolute p-4 top-10 h-full w-full justify-between items-center flex text-white px-10 text-3xl">
-        <div className="absolute top-2 md:top-20  p-4">
-          <div className="font-semibold md:font-extrabold text-3xl  flex flex-col gap-2 md:gap-10 lg:mb-6 ">
-            <h1 className="shadow-3xl bg-red-400  shadow-top shadow-right shadow-bottom shadow-left shadow-black">
-              Buy Best Foods From Here
+      <div className="absolute p-4  top-10 h-full w-full justify-between items-center flex text-white px-0 md:px-10 text-3xl">
+        <div className="absolute  top-2 md:top-10  p-2  md:pr-52">
+          <div className=" p-4 bg-gradient-to-tr from-white rounded-3xl font-semibold md:font-extrabold text-3xl  flex flex-col gap-2 md:gap-5 lg:mb-6 ">
+            <h1 className="text-3xl md:text-4xl">
+              <span className="text-red-500">Welcome</span> To{" "}
+              <span className="text-orange-500">Tastify</span>
             </h1>
 
-            <p>Hi How are you</p>
+            <p className="text-xl font-normal text-black">
+              At our marketplace, we don't just offer food – we deliver an
+              experience. From delectable delicacies to mouthwatering meals
+            </p>
           </div>
-          <p className="text-lg lg:text-3xl"></p>
-          <div>
+
+          <div className="text-center md:text-start mt-4">
             <Link
               to="allfoods"
-              className="border text-xl p-2 hover:bg-green-700"
+              className="border text-xl p-2 rounded-full  hover:bg-green-600 hover:border-none transition duration-500"
             >
               All Foods
             </Link>
@@ -67,20 +71,20 @@ const RightSlider = () => {
         <div className="absolute bottom-[150px] right-1/3 md:right-[150px] flex md:flex-col gap-2 ">
           <button
             onClick={previousSlide}
-            className="border border-orange-600 text-gray-400 p-1 md:p-2 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-orange-600 text-gray-400 p-1 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
-            <BsFillArrowLeftCircleFill className="text-orange-600" />
+            <BsFillArrowLeftCircleFill className="text-orange-600 text-sm" />
           </button>
           <button
             onClick={nextSlide}
-            className="border border-orange-600 text-gray-400 p-1 md:p-2 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-orange-600 text-gray-400 p-1 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
-            <BsFillArrowRightCircleFill className="text-orange-600" />
+            <BsFillArrowRightCircleFill className="text-orange-600 text-sm" />
           </button>
         </div>
       </div>
 
-      <div className="absolute hidden md:bottom-2 py-4 md:flex justify-center gap-3 w-full">
+      <div className="absolute  hidden border rounded-full  bottom-0 right-12 py-4 md:flex justify-center gap-3 w-1/3">
         {slides.map((s, i) => (
           <div
             onClick={() => {
