@@ -7,7 +7,9 @@ const TopFoods = () => {
   const [topSixFoods, setTopSixFoods] = useState([]);
 
   const loadTopFoods = async () => {
-    const response = await axios.get("http://localhost:5005/topsoldfoods");
+    const response = await axios.get("http://localhost:5005/topsoldfoods", {
+      withCredentials: true,
+    });
     setTopSixFoods(response.data);
   };
 

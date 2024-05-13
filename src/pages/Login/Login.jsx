@@ -4,6 +4,7 @@ import { BsFacebook } from "react-icons/bs";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
@@ -21,11 +22,22 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     loginUser(email, password)
       .then((result) => {
         console.log(result);
         toast.success("Login Success");
-        navigate(location.state || "/");
+        axios
+          .post(
+            "http://localhost:5005/jwt",
+            { email },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.data.success) {
+              navigate(location.state || "/");
+            }
+          });
       })
       .catch((error) => {
         if (error.code === "auth/invalid-credential") {
