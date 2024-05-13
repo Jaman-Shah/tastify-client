@@ -7,16 +7,21 @@ import { Link } from "react-router-dom";
 import PrivateRoute from "../../routers/PrivateRoute";
 
 const MyAddedFoods = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setLoading } = useContext(AuthContext);
   const [addedFoods, setAddedFoods] = useState([]);
 
   const darkValue = false;
 
   const loadAddedFoods = async () => {
     try {
+      await user.email;
       const response = await axios.get(
-        `http://localhost:5005/foods/${user.email}`
+        `http://localhost:5005/foods/${user?.email}`,
+        {
+          withCredentials: true,
+        }
       );
+
       setAddedFoods(response.data);
     } catch (error) {
       console.log(error.message);
@@ -25,7 +30,7 @@ const MyAddedFoods = () => {
 
   useEffect(() => {
     loadAddedFoods();
-  }, []);
+  }, [user]);
 
   const handleFoodDelete = (_id) => {
     console.log(_id);
@@ -60,7 +65,6 @@ const MyAddedFoods = () => {
     });
   };
 
-  console.log(addedFoods);
   return (
     <PrivateRoute>
       <div className="py-8">
