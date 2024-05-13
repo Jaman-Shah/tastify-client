@@ -14,7 +14,10 @@ const MyOrderedFoods = () => {
   const loadOrderedFoods = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5005/orders/${user.email}`
+        `http://localhost:5005/orders/${user.email}`,
+        {
+          withCredentials: true,
+        }
       );
       setOrderedFoods(response.data);
     } catch (error) {
