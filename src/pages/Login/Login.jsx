@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -10,6 +10,12 @@ const Login = () => {
 
   const { loginUser, singInWithFacebook } = useContext(AuthContext);
 
+  // importing navigate function
+  const navigate = useNavigate();
+
+  // importing location function
+  const location = useLocation();
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +25,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         toast.success("Login Success");
+        navigate(location.state || "/");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-credential") {

@@ -76,7 +76,7 @@ const PurchaseForm = () => {
         return toast.error("You added this, You cannot buy this");
       }
       if (inDbQuantity === 0) {
-        return toast.error("This food Stock over");
+        return toast.error("Item is not available");
       } else {
         const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
         const response = await axios.post(

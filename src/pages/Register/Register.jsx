@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
 import toast from "react-hot-toast";
@@ -13,6 +13,13 @@ const Register = () => {
   // getting auth context
 
   const { createUser } = useContext(AuthContext);
+
+  // importing navigate function
+  // importing navigate function
+  const navigate = useNavigate();
+
+  // importing location function
+  const location = useLocation();
 
   // validate password function
 
@@ -59,7 +66,7 @@ const Register = () => {
             photoURL: photo_url,
           }).then(() => {
             toast.success("Account Created Successfully");
-            navigate("/");
+            navigate(location.state || "/");
           });
         })
         .catch((error) => {
