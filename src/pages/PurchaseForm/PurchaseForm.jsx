@@ -95,6 +95,12 @@ const PurchaseForm = () => {
 
   return (
     <div className="container mx-auto">
+      <div className={`text-center mt-2 ${formData.quantity ? "hidden" : ""}`}>
+        <h1 className="text-2xl mb-2">You cannot buy this food</h1>
+        <h1 className="text-red-600 font-bold text-2xl">
+          This item is not available
+        </h1>
+      </div>
       <form className="max-w-md mx-auto mt-6 p-6 bg-gray-100 rounded-lg shadow-xl grid grid-cols-2 gap-4">
         <div>
           <label
@@ -183,7 +189,8 @@ const PurchaseForm = () => {
               handlePurchase(formData.inDbQuantity, formData.creator_email)
             }
             type="button"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            className="bg-blue-500 disabled:bg-gray-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            disabled={formData.quantity ? false : true}
           >
             Purchase
           </button>
