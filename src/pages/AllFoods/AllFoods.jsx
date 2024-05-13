@@ -34,8 +34,6 @@ const AllFoods = () => {
     loadFoods();
   }, []);
 
-  console.log(foods);
-
   return (
     <div className="p-4">
       <Banner />
