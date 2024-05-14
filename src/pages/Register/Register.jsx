@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { auth } from "../../firebase/firebase.config";
+import axios from "axios";
 
 const Register = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
@@ -65,6 +66,11 @@ const Register = () => {
             displayName: name,
             photoURL: photo_url,
           }).then(() => {
+            axios.post("http://localhost:5005/users", {
+              name,
+              email,
+              photo_url,
+            });
             toast.success("Account Created Successfully");
             navigate(location.state || "/");
           });

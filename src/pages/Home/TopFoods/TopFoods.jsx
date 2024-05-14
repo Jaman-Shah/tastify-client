@@ -19,7 +19,7 @@ const TopFoods = () => {
 
   console.log("top foods ", topSixFoods);
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <div className="text-center ">
         <h1 className="font-extrabold text-3xl">
           Our Top <span className="text-green-500">Foods</span>

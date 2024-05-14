@@ -6,6 +6,7 @@ import { RiGalleryLine } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,12 @@ const Navbar = () => {
   const handleSignOutUser = () => {
     signOutUser()
       .then(() => {
+        axios
+          .get("http://localhost:5005/logout", {
+            withCredentials: true,
+          })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
         toast.success("successfully sign out");
       })
       .catch((error) => {
