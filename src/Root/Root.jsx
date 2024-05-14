@@ -7,7 +7,10 @@ const Root = () => {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="mt-20">
+        {" "}
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

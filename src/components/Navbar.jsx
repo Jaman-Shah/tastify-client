@@ -63,11 +63,11 @@ const Navbar = () => {
   return (
     <nav
       x-data="{ isOpen: false }"
-      className={`sticky top-0 z-10  ${
-        navbarBg ? "bg-[#32CD32]" : "bg-[#008A00]"
+      className={`fixed w-full transform  top-1 rounded-xl z-10  ${
+        navbarBg ? "bg-[#32CD32]" : "bg-[#78e08f]"
       }  shadow`}
     >
-      <div className=" px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
+      <div className="px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
           <Link to="/">
             <h1 className="text-3xl">Tastify</h1>

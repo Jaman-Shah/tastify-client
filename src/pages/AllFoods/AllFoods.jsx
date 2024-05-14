@@ -36,7 +36,7 @@ const AllFoods = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="px-4">
       <Banner />
       <Helmet>
         <title>All Foods | Tastify</title>
