@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import Search from "./Search/Search";
 import Foods from "./Banner/Foods/Foods";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AllFoods = () => {
   const [input, setInput] = useState("");
@@ -37,6 +38,9 @@ const AllFoods = () => {
   return (
     <div className="p-4">
       <Banner />
+      <Helmet>
+        <title>All Foods | Tastify</title>
+      </Helmet>
       <Search
         input={input}
         setInput={setInput}

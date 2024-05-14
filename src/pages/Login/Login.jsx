@@ -25,7 +25,6 @@ const Login = () => {
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result);
         toast.success("Login Success");
         axios
           .post(

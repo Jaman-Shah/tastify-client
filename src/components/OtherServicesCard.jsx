@@ -2,7 +2,6 @@ import React from "react";
 
 const OtherServicesCard = ({ service }) => {
   const { title, image } = service;
-  console.log("image is", image);
 
   return (
     <div className="relative hover:bg-green-400 hover:cursor-pointer overflow-hidden border rounded-2xl p-20 ">

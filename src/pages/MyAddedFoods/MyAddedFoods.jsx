@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import PrivateRoute from "../../routers/PrivateRoute";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedFoods = () => {
   const { user, setLoading } = useContext(AuthContext);
@@ -68,6 +69,9 @@ const MyAddedFoods = () => {
   return (
     <PrivateRoute>
       <div className="py-8">
+        <Helmet>
+          <title>My Added Food | Tastify</title>
+        </Helmet>
         <div className="max-w-4xl mx-auto ">
           <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">
             All <span className="text-orange-500">Art </span>& Craft{" "}

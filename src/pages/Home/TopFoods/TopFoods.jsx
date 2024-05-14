@@ -17,7 +17,6 @@ const TopFoods = () => {
     loadTopFoods();
   }, []);
 
-  console.log("top foods ", topSixFoods);
   return (
     <div className="mt-4">
       <div className="text-center ">

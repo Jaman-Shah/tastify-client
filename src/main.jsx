@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider, useLocation } from "react-router-dom";
 import { routers } from "./routers/Routers.jsx";
 import AuthProvider from "./Providers/AuthProvider.jsx";
+import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
 
 const ScrollToTop = () => {
@@ -19,9 +20,11 @@ const ScrollToTop = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={routers}>
-        <ScrollToTop />
-      </RouterProvider>
+      <HelmetProvider>
+        <RouterProvider router={routers}>
+          <ScrollToTop />
+        </RouterProvider>
+      </HelmetProvider>
       <Toaster />
     </AuthProvider>
   </React.StrictMode>

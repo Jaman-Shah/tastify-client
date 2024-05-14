@@ -2,7 +2,6 @@ import React from "react";
 
 const GalleryCard = ({ singleGallery }) => {
   const { image, feedback, name } = singleGallery;
-  console.log(image);
 
   const bgImageStyle = {
     backgroundImage: `url(${image})`,

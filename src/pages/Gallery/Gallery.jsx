@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import axios from "axios";
 import GalleryCard from "../../components/GalleryCard";
+import { Helmet } from "react-helmet-async";
 
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
@@ -19,9 +20,11 @@ const Gallery = () => {
     loadGallery();
   }, []);
 
-  console.log(gallery);
   return (
     <div>
+      <Helmet>
+        <title>Gallery | Tastify</title>
+      </Helmet>
       <div className="m-4 rounded-2xl  text-center bg-[url('https://www.ucsfhealth.org/-/media/project/ucsf/ucsf-health/education/hero/top-ten-foods-for-health-2x.jpg')] bg-cover bg-center">
         <div className="font-bold rounded-2xl bg-gradient-to-tr  from-gray-900 text-white p-10">
           <h1 className="text-4xl mb-4">

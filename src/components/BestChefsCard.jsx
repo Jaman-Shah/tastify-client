@@ -2,7 +2,7 @@ import React from "react";
 
 const BestChefsCard = ({ elem }) => {
   const { name, rating, desc, image } = elem;
-  console.log(image);
+
   return (
     <div>
       <div className="h-full  flex  flex-col justify-center items-center pt-[100px] p-4 bg-green-400 border relative rounded-xl">

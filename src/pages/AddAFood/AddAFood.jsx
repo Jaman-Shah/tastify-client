@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import PrivateRoute from "../../routers/PrivateRoute";
+import { Helmet } from "react-helmet-async";
 
 const AddAFood = () => {
   const { user } = useContext(AuthContext);
@@ -51,6 +52,9 @@ const AddAFood = () => {
   return (
     <PrivateRoute>
       <div className="container mx-auto px-4 py-8">
+        <Helmet>
+          <title>Add A Food | Tastify</title>
+        </Helmet>
         <h2 className="text-3xl text-center my-2 font-extrabold mb-4">
           Add a Food
           <span className=" text-green-500"> Item</span>
