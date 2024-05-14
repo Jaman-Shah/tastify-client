@@ -17,7 +17,7 @@ const TopFoodsCard = ({ food }) => {
           <div className="text-center">
             <Link
               to={`/food/${_id}`}
-              className="p-2 bg-green-400 rounded-lg flex items-center gap-2 mt-4"
+              className="p-2 bg-green-400 rounded-lg w-1/2 md:w-full flex items-center gap-2 mt-4"
             >
               <p>View details</p>
               <FaArrowRightLong className="ml-4" />

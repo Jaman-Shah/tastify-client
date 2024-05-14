@@ -19,7 +19,7 @@ const TopFoods = () => {
 
   console.log("top foods ", topSixFoods);
   return (
-    <div>
+    <div className="mt-8">
       <div className="text-center ">
         <h1 className="font-extrabold text-3xl">
           Our Top <span className="text-green-500">Foods</span>
@@ -27,7 +27,7 @@ const TopFoods = () => {
         <p>See Our Top Foods For Grab </p>
       </div>
       <div className="my-14">
-        <div className=" grid mx-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between gap-10">
+        <div className=" grid mx-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-between gap-10">
           {TopFoods &&
             topSixFoods.map((food) => {
               return <TopFoodsCard key={food._id} food={food} />;

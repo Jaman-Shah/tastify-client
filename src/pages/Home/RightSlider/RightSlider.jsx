@@ -18,11 +18,13 @@ const slides = [
   },
   {
     id: 3,
-    image: "https://i.ibb.co/4jk4vJ3/slide-3.jpg",
+    image:
+      "https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg",
   },
   {
     id: 4,
-    image: "https://i.ibb.co/pQx8RyC/slide-4.jpg",
+    image:
+      "https://t3.ftcdn.net/jpg/02/52/38/80/360_F_252388016_KjPnB9vglSCuUJAumCDNbmMzGdzPAucK.jpg",
   },
 ];
 
@@ -68,16 +70,16 @@ const RightSlider = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-[150px] right-1/3 md:right-[150px] flex md:flex-col gap-2 ">
+        <div className="absolute mt-56 md:mt-0 md:bottom-[150px] right-2 md:right-[150px] flex md:flex-col gap-2 ">
           <button
             onClick={previousSlide}
-            className="border rounded-full border-orange-600 text-gray-400 p-1 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-orange-600 text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
             <BsFillArrowLeftCircleFill className="text-orange-600 text-sm" />
           </button>
           <button
             onClick={nextSlide}
-            className="border rounded-full border-orange-600 text-gray-400 p-1 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-orange-600 text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
             <BsFillArrowRightCircleFill className="text-orange-600 text-sm" />
           </button>
