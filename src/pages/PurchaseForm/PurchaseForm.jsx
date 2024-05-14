@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 // import toast from "react-hot-toast";
 
 const PurchaseForm = () => {
@@ -95,6 +96,9 @@ const PurchaseForm = () => {
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+        <title> Order | {formData.foodName}</title>
+      </Helmet>
       <div className={`text-center mt-2 ${formData.quantity ? "hidden" : ""}`}>
         <h1 className="text-2xl mb-2">You cannot buy this food</h1>
         <h1 className="text-red-600 font-bold text-2xl">

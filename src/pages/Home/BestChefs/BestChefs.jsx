@@ -22,19 +22,19 @@ const BestChefs = () => {
             {
               name: "Alex",
               rating: "5",
-              desc: "This is the chefs  form Italy",
+              desc: "He is the chefs  form Italy",
               image: image1,
             },
             {
-              name: "Graham",
+              name: "Nadia",
               rating: "5",
-              desc: "This is the chefs  form Japan",
+              desc: "She is the chefs  form Japan",
               image: image2,
             },
             {
               name: "Peter",
               rating: "5",
-              desc: "This is the chefs  form China",
+              desc: "He is the chefs  form China",
               image: image3,
             },
           ].map((elem, i) => {

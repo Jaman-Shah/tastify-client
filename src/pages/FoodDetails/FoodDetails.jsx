@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 
 const FoodDetails = () => {
@@ -36,6 +37,9 @@ const FoodDetails = () => {
   console.log(food);
   return (
     <div className="container mx-auto my-10">
+      <Helmet>
+        <title> {`${name}`} | Details</title>
+      </Helmet>
       <div className="h-[400px] w-full bg-green-400 relative overflow-hidden rounded-2xl">
         <div className="absolute -top-[200px] -left-[150px] transform rotate-[10deg] h-[2000px] w-1/2 bg-orange-600"></div>
         <div className="absolute  bottom-0 left-4  font-thin text-[50px]">

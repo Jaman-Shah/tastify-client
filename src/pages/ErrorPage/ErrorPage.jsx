@@ -2,11 +2,14 @@ import React from "react";
 
 const ErrorPage = () => {
   return (
-    <div className="flex bg-green-200 flex-col justify-center items-center h-screen">
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-gray-900 mb-8">
-        <span className="text-red-500 text-[200px]"> 404</span> <br /> Page Not
-        Found
-      </h1>
+    <div className={`bg-white-200 flex justify-center items-center h-screen`}>
+      <div className="w-full h-full overflow-hidden">
+        <img
+          src="https://cdn.dribbble.com/users/1022481/screenshots/3018253/404-snow.gif"
+          alt="404 Error"
+          className="object-contain w-auto h-auto mx-auto max-w-full max-h-full"
+        />
+      </div>
     </div>
   );
 };

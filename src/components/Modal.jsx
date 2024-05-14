@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -9,12 +9,14 @@ const Modal = ({ loadGallery }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  console.log(location.pathname);
+  console.log(navigate.sta);
   const handleModalOpen = () => {
     if (user) {
       setIsOpen(true);
     } else {
-      navigate("/login");
+      navigate("/login", { state: location.pathname });
     }
   };
 
