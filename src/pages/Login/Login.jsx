@@ -60,12 +60,12 @@ const Login = () => {
 
   return (
     <div>
-      <div className="relative max-w-screen-lg mx-auto my-10 bg-green-300 p-4 rounded-3xl">
-        <div className=" absolute h-[200px] top-0 left-[100px] rounded-b-lg  shadow-2xl w-[150px] bg-gray-500">
+      <div className="relative max-w-screen-lg mx-4 md:mx-auto my-10 bg-green-300 p-4 rounded-3xl">
+        <div className="relative  md:absolute h-[130px] mb-2 md:h-[200px] top-0 left-[100px] rounded-b-lg  shadow-2xl w-[150px] bg-gray-500">
           <div className="flex justify-around">
-            <div className="h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
-            <div className="h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
-            <div className="h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
+            <div className="h-10 md:h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
+            <div className="h-10 md:h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
+            <div className="h-10 md:h-[100px] w-[20px] bg-red-300 rounded-b-3xl"></div>
           </div>
           <h1 className="font-bold text-white text-2xl mt-4 text-center">
             Login With
@@ -88,7 +88,7 @@ const Login = () => {
         <div>
           <form
             onSubmit={handleLogin}
-            className="flex gap-4 flex-col w-1/3 mx-auto"
+            className="flex gap-4 flex-col w-full md:w-1/3 mx-auto"
           >
             <div>
               <input
