@@ -73,13 +73,13 @@ const RightSlider = () => {
         <div className="absolute mt-56 md:mt-0 md:bottom-[150px] right-2 md:right-[150px] flex md:flex-col gap-2 ">
           <button
             onClick={previousSlide}
-            className="border rounded-full border-orange-600 text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-white text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
             <BsFillArrowLeftCircleFill className="text-orange-600 text-sm" />
           </button>
           <button
             onClick={nextSlide}
-            className="border rounded-full border-orange-600 text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
+            className="border rounded-full border-white text-gray-400 p-2 md:p-4 hover:border-none hover:bg-green-500 transition duration-500"
           >
             <BsFillArrowRightCircleFill className="text-orange-600 text-sm" />
           </button>

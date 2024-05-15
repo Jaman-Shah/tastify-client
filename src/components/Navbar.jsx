@@ -70,7 +70,7 @@ const Navbar = () => {
       <div className="px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
           <Link to="/">
-            <h1 className="text-3xl">Tastify</h1>
+            <h1 className="text-3xl font-bold text-orange-500">Tastify</h1>
           </Link>
 
           {/* Mobile menu button */}
