@@ -69,7 +69,6 @@ const Navbar = () => {
     >
       <div className="px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
-          {user?.email}
           <Link to="/">
             <h1 className="text-3xl">Tastify</h1>
           </Link>
