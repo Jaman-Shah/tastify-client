@@ -33,7 +33,7 @@ const PurchaseForm = () => {
         ...formData,
         id: _id || "",
         foodName: name || "",
-        quantity: quantity || 0,
+        quantity: 1,
         inDbQuantity: quantity || 0,
         price: price || "",
         creator_email: creator_email || "",
