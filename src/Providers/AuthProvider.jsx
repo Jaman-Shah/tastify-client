@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
   FacebookAuthProvider,
+  GithubAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -15,7 +16,11 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // facebook auth provider
   const facebookProvider = new FacebookAuthProvider();
+
+  // git hub auth provider
+  const githubProvider = new GithubAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -38,6 +43,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, facebookProvider);
   };
 
+  const signInWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -56,6 +65,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     signOutUser,
     singInWithFacebook,
+    signInWithGithub,
   };
 
   return (

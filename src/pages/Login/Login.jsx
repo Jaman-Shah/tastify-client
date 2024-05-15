@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsFacebook } from "react-icons/bs";
+import { VscGithub } from "react-icons/vsc";
 import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast from "react-hot-toast";
@@ -9,7 +9,7 @@ import axios from "axios";
 const Login = () => {
   const [eyeOpen, setEyeOpen] = useState(false);
 
-  const { loginUser, singInWithFacebook } = useContext(AuthContext);
+  const { loginUser, signInWithGithub } = useContext(AuthContext);
 
   // importing navigate function
   const navigate = useNavigate();
@@ -47,10 +47,13 @@ const Login = () => {
       });
   };
 
-  const handleFacebookLogin = () => {
-    singInWithFacebook()
+  const handleGithubLogin = () => {
+    signInWithGithub()
       .then((result) => {
         toast.success("Login Success");
+        if (result.user) {
+          navigate(location.state || "/");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -71,10 +74,10 @@ const Login = () => {
           </h1>
           <div className="text-center">
             <button
-              onClick={handleFacebookLogin}
-              className="p-2  rounded-full bg-blue-700 border-green-500"
+              onClick={handleGithubLogin}
+              className="p-2  rounded-full bg-green-500 border-green-500"
             >
-              <BsFacebook className="text-2xl" />
+              <VscGithub className="text-2xl" />
             </button>
           </div>
         </div>
