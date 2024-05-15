@@ -28,7 +28,7 @@ const Login = () => {
         toast.success("Login Success");
         axios
           .post(
-            "http://localhost:5005/jwt",
+            "https://tastify-server-ten.vercel.app/jwt",
             { email },
             { withCredentials: true }
           )

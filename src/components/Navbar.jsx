@@ -41,7 +41,7 @@ const Navbar = () => {
     signOutUser()
       .then(() => {
         axios
-          .get("http://localhost:5005/logout", {
+          .get("https://tastify-server-ten.vercel.app/logout", {
             withCredentials: true,
           })
           .then((res) => res.json())

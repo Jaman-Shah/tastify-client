@@ -9,7 +9,9 @@ const Gallery = () => {
 
   const loadGallery = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/gallery");
+      const response = await axios.get(
+        "https://tastify-server-ten.vercel.app/gallery"
+      );
       setGallery(response.data);
     } catch (error) {
       console.log(error.message);

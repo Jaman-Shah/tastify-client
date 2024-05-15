@@ -45,7 +45,7 @@ const UpdateFood = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/food/${_id}`,
+        `https://tastify-server-ten.vercel.app/food/${_id}`,
         formData
       );
       console.log(response.data);
@@ -61,8 +61,8 @@ const UpdateFood = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl text-center my-2 font-extrabold mb-4">
-        Add a Food
-        <span className=" text-green-500"> Item</span>
+        Update
+        <span className=" text-green-500"> {name}</span>
       </h2>
       <form onSubmit={handleUpdateFood}>
         <div className="grid grid-cols-2 gap-4 bg-green-300 p-10 rounded-xl">

@@ -37,7 +37,7 @@ const AddAFood = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5005/foods",
+        "https://tastify-server-ten.vercel.app/foods",
         formData
       );
 

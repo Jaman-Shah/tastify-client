@@ -7,9 +7,12 @@ const TopFoods = () => {
   const [topSixFoods, setTopSixFoods] = useState([]);
 
   const loadTopFoods = async () => {
-    const response = await axios.get("http://localhost:5005/topsoldfoods", {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      "https://tastify-server-ten.vercel.app/topsoldfoods",
+      {
+        withCredentials: true,
+      }
+    );
     setTopSixFoods(response.data);
   };
 

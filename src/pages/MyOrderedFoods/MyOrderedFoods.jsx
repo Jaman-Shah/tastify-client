@@ -15,7 +15,7 @@ const MyOrderedFoods = () => {
   const loadOrderedFoods = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5005/orders/${user.email}`,
+        `https://tastify-server-ten.vercel.app/orders/${user.email}`,
         {
           withCredentials: true,
         }
@@ -48,7 +48,7 @@ const MyOrderedFoods = () => {
         //   icon: "success",
         // });
 
-        fetch(`http://localhost:5005/orders/${_id}`, {
+        fetch(`https://tastify-server-ten.vercel.app/orders/${_id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

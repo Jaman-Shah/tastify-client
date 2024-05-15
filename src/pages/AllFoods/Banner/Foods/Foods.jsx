@@ -8,7 +8,9 @@ const Foods = () => {
 
   const loadFoods = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5005/foods");
+      const { data } = await axios.get(
+        "https://tastify-server-ten.vercel.app/foods"
+      );
       setFoods(data);
     } catch (error) {
       console.log(error.message);
@@ -20,7 +22,7 @@ const Foods = () => {
     const value = e.target.input.value;
     console.log(value);
     const response = axios
-      .get(`http://localhost:5005/foods/search?name=${value}`)
+      .get(`https://tastify-server-ten.vercel.app/foods/search?name=${value}`)
       .then((res) => {
         setFoods(res.data);
       });

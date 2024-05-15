@@ -11,7 +11,9 @@ const FoodDetails = () => {
   // loading single food by id
   const loadFood = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/food/${id}`);
+      const response = await axios.get(
+        `https://tastify-server-ten.vercel.app/food/${id}`
+      );
       setFood(response.data);
     } catch (error) {
       console.log(error.message);

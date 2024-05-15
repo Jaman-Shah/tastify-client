@@ -53,7 +53,7 @@ export const routers = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5005/food/${params.id}`),
+          fetch(`https://tastify-server-ten.vercel.app/food/${params.id}`),
       },
       {
         path: "/myorderedfoods",

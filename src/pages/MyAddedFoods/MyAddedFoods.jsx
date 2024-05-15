@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import PrivateRoute from "../../routers/PrivateRoute";
 import { Helmet } from "react-helmet-async";
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const MyAddedFoods = () => {
   const { user, setLoading } = useContext(AuthContext);
@@ -17,7 +19,7 @@ const MyAddedFoods = () => {
     try {
       await user.email;
       const response = await axios.get(
-        `http://localhost:5005/foods/${user?.email}`,
+        `https://tastify-server-ten.vercel.app/foods/${user?.email}`,
         {
           withCredentials: true,
         }
@@ -51,7 +53,7 @@ const MyAddedFoods = () => {
         //   icon: "success",
         // });
 
-        fetch(`http://localhost:5005/foods/${_id}`, {
+        fetch(`https://tastify-server-ten.vercel.app/foods/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -72,10 +74,9 @@ const MyAddedFoods = () => {
         <Helmet>
           <title>My Added Food | Tastify</title>
         </Helmet>
-        <div className="max-w-4xl mx-auto ">
+        <div className="max-w-4xl mx-auto rounded-3xl">
           <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">
-            All <span className="text-orange-500">Art </span>& Craft{" "}
-            <span className="text-blue-400">Items</span>
+            Update And Delete
           </h1>
 
           <div className="divider px-4 md:p-0"></div>
@@ -101,7 +102,7 @@ const MyAddedFoods = () => {
                 addedFoods.map((item, index) => (
                   <tr
                     key={index}
-                    className={index % 2 === 0 ? "bg-green-200" : "bg-green-50"}
+                    className={index % 2 === 0 ? "bg-blue-200" : "bg--200"}
                   >
                     <td
                       className={`border-r-2 ${
@@ -124,20 +125,17 @@ const MyAddedFoods = () => {
                     >
                       {item.price}
                     </td>
-                    <td className=" text-center">
-                      <Link
-                        to={`/update/${item._id}`}
-                        className="border-2 border-gray-500 md:p-2  text-black bg-transparent  hover:bg-green-400 hover:border-green-500 transition duration-500  rounded"
-                      >
-                        Update
+                    <td className="flex justify-center border-r-2  border-black">
+                      <Link to={`/update/${item._id}`} className="  ">
+                        <FaRegEdit className="text-2xl text-blue-600" />
                       </Link>
                     </td>
-                    <td className=" text-center">
+                    <td className=" text-center border-r-2  border-black">
                       <button
                         onClick={() => handleFoodDelete(item._id)}
-                        className="border-2 border-gray-500 md:p-2  text-black bg-transparent  hover:bg-green-400 hover:border-green-500 transition duration-500  rounded"
+                        className="  "
                       >
-                        Delete
+                        <RiDeleteBin6Line className="text-2xl text-red-400" />
                       </button>
                     </td>
                   </tr>

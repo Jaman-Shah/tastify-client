@@ -29,7 +29,10 @@ const Modal = ({ loadGallery }) => {
     const image = form.image.value;
     const data = { name, email, feedback, image };
     try {
-      const response = await axios.post("http://localhost:5005/gallery", data);
+      const response = await axios.post(
+        "https://tastify-server-ten.vercel.app/gallery",
+        data
+      );
       if (response.data.acknowledged) {
         toast.success("Feedback Submitted");
         loadGallery();

@@ -66,7 +66,7 @@ const Register = () => {
             displayName: name,
             photoURL: photo_url,
           }).then(() => {
-            axios.post("http://localhost:5005/users", {
+            axios.post("https://tastify-server-ten.vercel.app/users", {
               name,
               email,
               photo_url,

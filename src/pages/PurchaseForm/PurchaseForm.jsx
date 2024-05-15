@@ -25,7 +25,9 @@ const PurchaseForm = () => {
   // loading single food by id
   const loadFood = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/food/${id}`);
+      const response = await axios.get(
+        `https://tastify-server-ten.vercel.app/food/${id}`
+      );
       const { _id, name, quantity, price, creator_email } = response.data;
       setFormData({
         ...formData,
@@ -81,7 +83,7 @@ const PurchaseForm = () => {
       } else {
         const { inDbQuantity, ...formDataWithoutInDbQuantity } = formData;
         const response = await axios.post(
-          "http://localhost:5005/orders",
+          "https://tastify-server-ten.vercel.app/orders",
           formDataWithoutInDbQuantity
         );
         if (response.data.insertResult && response.data.updateResult) {
