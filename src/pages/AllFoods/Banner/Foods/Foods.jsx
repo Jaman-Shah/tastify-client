@@ -53,9 +53,6 @@ const Foods = () => {
               return <FoodsCard key={food._id} food={food} />;
             })}
         </div>
-        <div className="text-center mt-2">
-          <button className="p-2 border bg-green-400">See All</button>
-        </div>
       </div>
     </div>
   );
