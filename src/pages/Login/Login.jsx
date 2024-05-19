@@ -52,6 +52,14 @@ const Login = () => {
       .then((result) => {
         toast.success("Login Success");
         if (result.user) {
+          const email = result.user.email;
+          axios.get(
+            "https://tastify-server-ten.vercel.app/jwt",
+            {
+              email,
+            },
+            { withCredentials: true }
+          );
           navigate(location.state || "/");
         }
       })

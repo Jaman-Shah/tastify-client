@@ -15,7 +15,7 @@ const MyOrderedFoods = () => {
   const loadOrderedFoods = async () => {
     try {
       const response = await axios.get(
-        `https://tastify-server-ten.vercel.app/orders/${user.email}`,
+        `https://tastify-server-ten.vercel.app/orders/${user?.email}`,
         {
           withCredentials: true,
         }
@@ -25,6 +25,7 @@ const MyOrderedFoods = () => {
       console.log(error.message);
     }
   };
+  console.log("email is", user.email);
 
   useEffect(() => {
     loadOrderedFoods();
@@ -78,8 +79,7 @@ const MyOrderedFoods = () => {
         </Helmet>
         <div className="max-w-4xl mx-auto ">
           <h1 className="text-2xl md:text-4xl font-bold mb-4 text-center">
-            All <span className="text-orange-500">Art </span>& Craft{" "}
-            <span className="text-blue-400">Items</span>
+            My Ordered Foods
           </h1>
 
           <div className="divider px-4 md:p-0"></div>

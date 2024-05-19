@@ -35,7 +35,11 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/myaddedfoods",
-        element: <MyAddedFoods />,
+        element: (
+          <PrivateRoute>
+            <MyAddedFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addafood",

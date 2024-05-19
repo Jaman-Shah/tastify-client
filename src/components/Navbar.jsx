@@ -40,16 +40,17 @@ const Navbar = () => {
   const handleSignOutUser = () => {
     signOutUser()
       .then(() => {
-        axios
-          .get("https://tastify-server-ten.vercel.app/logout", {
-            withCredentials: true,
-          })
-          .then((res) => res.json())
-          .then((data) => console.log(data));
-        toast.success("successfully sign out");
+        return axios.get("https://tastify-server-ten.vercel.app/logout", {
+          withCredentials: true,
+        });
+      })
+      .then((data) => {
+        console.log(data);
+        toast.success("Successfully signed out");
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Failed to sign out");
       });
   };
 

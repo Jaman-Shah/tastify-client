@@ -86,6 +86,7 @@ const PurchaseForm = () => {
           "https://tastify-server-ten.vercel.app/orders",
           formDataWithoutInDbQuantity
         );
+        console.log(response.data);
         if (response.data.insertResult && response.data.updateResult) {
           toast.success("Order Place Success");
           loadFood();
