@@ -29,8 +29,6 @@ const Navbar = () => {
     }
   };
 
-  window.addEventListener("scroll", changeNavbarBg);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
